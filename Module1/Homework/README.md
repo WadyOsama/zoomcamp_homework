@@ -2,7 +2,7 @@
 
 ## Question 1. Understanding docker first run 
 
-``` bash
+```bash
 docker run -it --entrypoint=/bin/bash python:3.12.8
 ```
 ```
