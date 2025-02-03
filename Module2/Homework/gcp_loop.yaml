@@ -1,0 +1,30 @@
+id: gcp_loop
+namespace: zoomcamp.lesson
+
+tasks:
+  - id: looping_color
+    type: io.kestra.plugin.core.flow.ForEach
+    concurrencyLimit: 1
+    values: ["green", "yellow"]
+    tasks:
+      - id: looping_year
+        type: io.kestra.plugin.core.flow.ForEach
+        concurrencyLimit: 1
+        values: [2019, 2020, 2021]
+        tasks:
+          - id: looping_month
+            type: io.kestra.plugin.core.flow.ForEach
+            concurrencyLimit: 1
+            values: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+            tasks:
+              - id: call_subflow
+                type: io.kestra.plugin.core.flow.Subflow
+                namespace: zoomcamp.lesson
+                flowId: gcp_taxi
+                inputs:
+                  taxi: "{{parents[1].taskrun.value}}"
+                  year: "{{parents[0].taskrun.value}}"
+                  month: "{{taskrun.value}}"
+                wait: true
+                transmitFailed: false
+                inheritLabels: true
