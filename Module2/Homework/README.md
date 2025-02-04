@@ -22,15 +22,35 @@ I used my own modified flow file **[GCP_Flow](gcp_taxi_scheduled.yaml)** to back
 
 <span style="font-size: 18px;"> 3. How many rows are there for the `Yellow` Taxi data for all CSV files in the year 2020?</span>
 
+```sql
+-- Rows in Yellow Taxi Data in the year 2020
+SELECT COUNT(*)
+FROM `<PROJECT_ID>.kestra_wady_dataset.yellow_tripdata`
+WHERE filename LIKE "yellow_tripdata_2020%";
+```
 <span style="font-size: 18px;">Answer: **`24,648,499`**</span>
 ----
 
 <span style="font-size: 18px;"> 4. How many rows are there for the `Green` Taxi data for all CSV files in the year 2020?</span>
 
+```sql
+-- Rows in Green Taxi Data in the year 2020
+SELECT COUNT(*)
+FROM `<PROJECT_ID>.kestra_wady_dataset.green_tripdata`
+WHERE filename LIKE "green_tripdata_2020%";
+```
+
 <span style="font-size: 18px;">Answer: **`1,734,051`**</span>
 ----
 
 <span style="font-size: 18px;"> 5. How many rows are there for the `Yellow` Taxi data for the March 2021 CSV file?</span>
+
+```sql
+-- Rows in Yellow Taxi Data in March 2021
+SELECT COUNT(*)
+FROM `<PROJECT_ID>.kestra_wady_dataset.yellow_tripdata`
+WHERE filename = "yellow_tripdata_2021-03.csv";
+```
 
 <span style="font-size: 18px;">Answer: **`1,925,152`**</span>
 ----
