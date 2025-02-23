@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: eighth-edge-289309
+    schema: BigQuery_Module
+
+    tables:
+      - name: green_taxi_data_non_partitioned
+      - name: yellow_taxi_data_non_partitioned
